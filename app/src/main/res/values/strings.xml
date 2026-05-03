@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Кадровый центр ОЖД</string>
+    <string name="splash_title">Кадровый центр ОЖД</string>
+
+    <string name="theme_section">Оформление</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_system">Как в системе</string>
+
+    <string name="create_request_employee_hint">Отпуск, больничный, премия, перевод и другие типы заявок выбирайте во вкладках ниже — список настраивает HR.</string>
+
+    <string name="nav_home">Главная</string>
+    <string name="nav_employees">Сотрудники</string>
+    <string name="nav_create">Создать</string>
+    <string name="nav_notifications">Уведомления</string>
+
+    <string name="home_tab_profile">Мой профиль</string>
+    <string name="home_tab_chat">Чат</string>
+    <string name="home_tab_moderation">Модерация</string>
+    <string name="home_tab_requests">Заявки</string>
+
+    <string name="emp_tab_all">Все сотрудники</string>
+    <string name="emp_tab_dept">Мой отдел</string>
+    <string name="emp_tab_military">Военнообязанные</string>
+    <string name="emp_tab_dismissed">Уволенные</string>
+
+    <string name="req_tab_vacation">Отпуск/больничный</string>
+    <string name="req_tab_bonus">Премия/повышение</string>
+    <string name="req_tab_transfer">Перевод/обучение</string>
+    <string name="req_tab_other">Другое</string>
+
+    <string name="notif_tab_unread">Непрочитанные</string>
+    <string name="notif_tab_archive">Архив</string>
+    <string name="notif_tab_system">Системные</string>
+    <string name="notif_tab_chat">Чат</string>
+
+    <string name="login_title">Вход</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Пароль</string>
+    <string name="login_submit">Войти</string>
+    <string name="login_error_empty">Заполните поля</string>
+    <string name="login_hint_demo">Без сервера (debug): сотрудник — employee@ozhd.local / employee123 · HR — hr@ozhd.local / hr123. Или любой email с hr. в адресе.</string>
+
+    <string name="role_employee">Сотрудник</string>
+    <string name="role_hr">HR</string>
+
+    <string name="chat_hint">Сообщение…</string>
+    <string name="chat_send">Отправить</string>
+
+    <string name="logout">Выход</string>
+    <string name="logout_confirm_title">Выход из аккаунта</string>
+    <string name="logout_confirm_message">Завершить сеанс и вернуться на экран входа?</string>
+    <string name="logout_confirm_yes">Выйти</string>
+    <string name="logout_button">Выйти из аккаунта</string>
+
+    <string name="menu_hr_console">Администрирование</string>
+    <string name="hr_only_message">Доступно только для роли HR.</string>
+    <string name="hr_tab_departments">Отделы</string>
+    <string name="hr_tab_employees">Сотрудники</string>
+    <string name="hr_tab_request_types">Типы заявок</string>
+    <string name="hr_add_department">Новый отдел</string>
+    <string name="hr_add_employee">Новый сотрудник</string>
+    <string name="hr_add_kind">Новый тип заявки</string>
+    <string name="hr_add_field">Новое поле</string>
+    <string name="hr_delete_confirm">Удалить запись?</string>
+    <string name="hr_select_kind_first">Сначала выберите тип заявки в верхнем списке</string>
+    <string name="hr_department_name">Название отдела</string>
+    <string name="hr_department_desc">Описание</string>
+    <string name="hr_employee_email">Email</string>
+    <string name="hr_employee_name">ФИО</string>
+    <string name="hr_employee_dept_id">ID отдела</string>
+    <string name="hr_kind_name">Название типа</string>
+    <string name="hr_kind_desc">Описание типа</string>
+    <string name="hr_field_key">Ключ поля (латиница)</string>
+    <string name="hr_field_label">Подпись</string>
+    <string name="hr_sync_stub">Изменения сохранены локально. Нажмите «Синхронизация» в шапке консоли HR для загрузки каталога с сервера (GET hr/catalog).</string>
+    <string name="hr_sync_menu">Синхронизация</string>
+    <string name="hr_sync_ok">Справочники обновлены с сервера</string>
+    <string name="hr_sync_fail">Не удалось синхронизировать: %1$s</string>
+    <string name="hr_edit">Изменить</string>
+    <string name="hr_delete_self_forbidden">Нельзя удалить текущего пользователя.</string>
+    <string name="hr_fields_section">Поля выбранного типа</string>
+
+    <string name="create_request_empty_kinds">Нет активных типов заявок. Обратитесь к HR.</string>
+    <string name="request_submit">Отправить заявку</string>
+    <string name="request_no_fields">Для этого типа не настроены поля.</string>
+    <string name="request_fill_required">Заполните поле: %1$s</string>
+    <string name="request_no_session">Сессия пользователя не найдена</string>
+    <string name="request_sent_local">Заявка сохранена локально</string>
+    <string name="field_required_hint">Обязательное поле</string>
+    <string name="field_file_stub">Вложение (заглушка — подключите Storage)</string>
+    <string name="field_date_hint">Выберите дату</string>
+
+    <string name="chat_you">Вы</string>
+    <string name="chat_unknown_sender">Неизвестный</string>
+</resources>

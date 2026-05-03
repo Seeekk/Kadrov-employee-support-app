@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.KadrovSupport" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurface">#FF1C1C1E</item>
+        <item name="android:colorBackground">#FF121212</item>
+        <item name="shapeAppearanceSmallComponent">@style/Shape.Kadrov.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/Shape.Kadrov.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/Shape.Kadrov.Large</item>
+    </style>
+</resources>

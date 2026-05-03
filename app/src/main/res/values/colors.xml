@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Базовые -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Бренд: пастельный красный / акцент Material 3 -->
+    <color name="accent_primary">#E57373</color>
+    <color name="accent_secondary">#F28B82</color>
+    <color name="surface_variant_soft">#FFF5F5</color>
+    <color name="outline_soft">#1A000000</color>
+    <color name="text_secondary">#99000000</color>
+
+    <!-- Красный акцент загрузочного экрана (в духе корпоративного красного РЖД) -->
+    <color name="splash_brand_red">#E31E24</color>
+</resources>

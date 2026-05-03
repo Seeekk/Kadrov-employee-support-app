@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black">
+
+    <ImageView
+        android:id="@+id/splash_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:src="@drawable/splash_station" />
+
+    <!-- Затемнение, чтобы красный текст читался как на референсе РЖД -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#73000000" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="54dp"
+            android:gravity="center"
+            android:letterSpacing="0.02"
+            android:lineSpacingMultiplier="0.95"
+            android:text="@string/splash_title"
+            android:textColor="@color/splash_brand_red"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <!-- Тонкая красная линия под заголовком, по мотивам фирменного экрана -->
+        <View
+            android:layout_width="140dp"
+            android:layout_height="3dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="14dp"
+            android:background="@color/splash_brand_red" />
+    </LinearLayout>
+</FrameLayout>

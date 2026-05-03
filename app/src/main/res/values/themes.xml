@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- DayNight: фактически светлая или тёмная палитра задаётся AppCompatDelegate + values-night -->
+    <style name="Base.Theme.KadrovSupport" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/accent_secondary</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+        <item name="shapeAppearanceSmallComponent">@style/Shape.Kadrov.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/Shape.Kadrov.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/Shape.Kadrov.Large</item>
+    </style>
+
+    <style name="Theme.KadrovSupport" parent="Base.Theme.KadrovSupport" />
+
+    <!-- Кастомный брендированный splash (без системной иконки launcher). -->
+    <style name="Theme.KadrovSupport.SplashBranded" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">#99000000</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="Theme.KadrovSupport.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="postSplashScreenTheme">@style/Theme.KadrovSupport</item>
+    </style>
+
+    <style name="Shape.Kadrov.Small" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    <style name="Shape.Kadrov.Medium" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+    <style name="Shape.Kadrov.Large" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">24dp</item>
+    </style>
+</resources>
