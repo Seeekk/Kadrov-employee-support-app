@@ -45,6 +45,7 @@ public class RequestSubmissionRepository {
             r.title = title;
             r.description = description.isEmpty() ? null : description;
             r.payloadJson = gson.toJson(payload);
+            r.rejectionReason = null;
             r.createdAt = System.currentTimeMillis();
             r.updatedAt = r.createdAt;
             r.isSynced = false;

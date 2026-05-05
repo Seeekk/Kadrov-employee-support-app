@@ -53,6 +53,9 @@ public class RequestEntity {
     /** Ответы по динамическим полям: {"startDate":"2026-05-01","comment":"..."} */
     public String payloadJson;
 
+    /** Причина отказа (обязательно заполняется HR при статусе REJECTED). */
+    public String rejectionReason;
+
     public long createdAt;
     public long updatedAt;
     public boolean isSynced;

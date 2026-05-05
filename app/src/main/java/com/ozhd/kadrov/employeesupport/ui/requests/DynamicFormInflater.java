@@ -46,6 +46,9 @@ public final class DynamicFormInflater {
             lp.bottomMargin = marginPx;
             til.setLayoutParams(lp);
             til.setHint(f.label);
+            if (f.inputType == FieldInputType.DATE) {
+                til.setPlaceholderText(ctx.getString(R.string.field_date_hint));
+            }
             TextInputEditText et = new TextInputEditText(til.getContext());
             et.setTag(f.fieldKey);
             applyInputType(ctx, et, f.inputType);
@@ -70,7 +73,7 @@ public final class DynamicFormInflater {
                 et.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
                 break;
             case DATE:
-                et.setHint(ctx.getString(R.string.field_date_hint));
+                // Hint уже задаётся на уровне TextInputLayout, чтобы не было наложения текста.
                 break;
             case FILE:
                 et.setFocusable(false);

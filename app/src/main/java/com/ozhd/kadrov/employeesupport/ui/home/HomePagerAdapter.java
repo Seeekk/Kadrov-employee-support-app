@@ -9,6 +9,7 @@ import com.ozhd.kadrov.employeesupport.data.model.UserRole;
 import com.ozhd.kadrov.employeesupport.ui.chat.ChatFragment;
 import com.ozhd.kadrov.employeesupport.ui.common.SectionPlaceholderFragment;
 import com.ozhd.kadrov.employeesupport.ui.profile.ProfileFragment;
+import com.ozhd.kadrov.employeesupport.ui.requests.RequestsFragment;
 
 /**
  * Вкладки «Главная»: профиль, чат, (опционально) модерация HR, заявки.
@@ -17,16 +18,13 @@ public class HomePagerAdapter extends FragmentStateAdapter {
 
     private final UserRole role;
     private final String titleModeration;
-    private final String titleRequests;
 
     public HomePagerAdapter(@NonNull Fragment fragment,
                             @NonNull UserRole role,
-                            @NonNull String titleModeration,
-                            @NonNull String titleRequests) {
+                            @NonNull String titleModeration) {
         super(fragment);
         this.role = role;
         this.titleModeration = titleModeration;
-        this.titleRequests = titleRequests;
     }
 
     @Override
@@ -48,7 +46,7 @@ public class HomePagerAdapter extends FragmentStateAdapter {
                     return SectionPlaceholderFragment.newInstance(titleModeration);
                 case 3:
                 default:
-                    return SectionPlaceholderFragment.newInstance(titleRequests);
+                    return RequestsFragment.newInstance();
             }
         } else {
             switch (position) {
@@ -58,7 +56,7 @@ public class HomePagerAdapter extends FragmentStateAdapter {
                     return ChatFragment.newInstance();
                 case 2:
                 default:
-                    return SectionPlaceholderFragment.newInstance(titleRequests);
+                    return RequestsFragment.newInstance();
             }
         }
     }

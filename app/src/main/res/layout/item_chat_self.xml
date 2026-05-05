@@ -13,13 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?attr/textAppearanceLabelSmall"
-        android:textColor="@color/text_secondary" />
+        android:textColor="@color/chat_text_primary"
+        android:textStyle="bold" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        app:cardBackgroundColor="@color/accent_secondary"
+        app:cardBackgroundColor="@color/chat_bubble_self"
         app:cardCornerRadius="16dp"
         app:cardElevation="0dp">
 
@@ -31,6 +32,7 @@
             android:paddingHorizontal="14dp"
             android:paddingVertical="10dp"
             android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="@color/white" />
+            android:textColor="@color/chat_text_primary"
+            android:textStyle="bold" />
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

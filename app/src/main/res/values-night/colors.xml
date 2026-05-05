@@ -2,4 +2,16 @@
 <resources>
     <!-- В тёмной теме вторичный текст на тёмном фоне -->
     <color name="text_secondary">#B3FFFFFF</color>
+    <color name="request_card_bg">#FF232327</color>
+    <color name="request_card_stroke">#33FFFFFF</color>
+    <color name="request_text_primary">#FFFFFFFF</color>
+    <color name="chat_bubble_self">#FFEF9A9A</color>
+    <color name="chat_bubble_other">#FF2C2C31</color>
+    <color name="chat_text_primary">#FFFFFFFF</color>
+    <color name="status_pending_bg">#FF665200</color>
+    <color name="status_pending_text">#FFFFE5A3</color>
+    <color name="status_approved_bg">#FF1E4E27</color>
+    <color name="status_approved_text">#FFC7F6CF</color>
+    <color name="status_rejected_bg">#FF5B2028</color>
+    <color name="status_rejected_text">#FFFFC5CC</color>
 </resources>

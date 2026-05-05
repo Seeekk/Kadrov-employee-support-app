@@ -10,6 +10,18 @@
     <color name="surface_variant_soft">#FFF5F5</color>
     <color name="outline_soft">#1A000000</color>
     <color name="text_secondary">#99000000</color>
+    <color name="request_card_bg">#FFFFFFFF</color>
+    <color name="request_card_stroke">#14000000</color>
+    <color name="request_text_primary">#FF000000</color>
+    <color name="chat_bubble_self">#E57373</color>
+    <color name="chat_bubble_other">#FFF5F5</color>
+    <color name="chat_text_primary">#FF000000</color>
+    <color name="status_pending_bg">#FFF4CC</color>
+    <color name="status_pending_text">#FF3B2A00</color>
+    <color name="status_approved_bg">#D4F3D8</color>
+    <color name="status_approved_text">#FF113A18</color>
+    <color name="status_rejected_bg">#FFD9DD</color>
+    <color name="status_rejected_text">#FF3D0A10</color>
 
     <!-- Красный акцент загрузочного экрана (в духе корпоративного красного РЖД) -->
     <color name="splash_brand_red">#E31E24</color>

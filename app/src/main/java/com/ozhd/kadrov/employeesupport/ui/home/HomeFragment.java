@@ -68,8 +68,7 @@ public class HomeFragment extends Fragment {
         HomePagerAdapter adapter = new HomePagerAdapter(
                 this,
                 role,
-                getString(R.string.home_tab_moderation),
-                getString(R.string.home_tab_requests)
+                getString(R.string.home_tab_moderation)
         );
         binding.viewPager.setAdapter(adapter);
         // Не держим все вкладки в памяти сразу — иначе рано создаётся чат и тяжёлые сервисы.

@@ -88,6 +88,17 @@
     <string name="request_fill_required">Заполните поле: %1$s</string>
     <string name="request_no_session">Сессия пользователя не найдена</string>
     <string name="request_sent_local">Заявка сохранена локально</string>
+    <string name="requests_empty">Пока нет созданных заявок</string>
+    <string name="request_author_format">Автор: %1$s</string>
+    <string name="request_author_unknown">Неизвестный сотрудник</string>
+    <string name="request_approve">Одобрить</string>
+    <string name="request_reject">Отказать</string>
+    <string name="request_status_pending">В обработке</string>
+    <string name="request_status_approved">Одобрена</string>
+    <string name="request_status_rejected">Отказ</string>
+    <string name="request_reject_reason_title">Причина отказа</string>
+    <string name="request_reject_reason_hint">Укажите причину отказа</string>
+    <string name="request_reject_reason_required">Причина обязательна</string>
     <string name="field_required_hint">Обязательное поле</string>
     <string name="field_file_stub">Вложение (заглушка — подключите Storage)</string>
     <string name="field_date_hint">Выберите дату</string>
