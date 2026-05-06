@@ -7,7 +7,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 /**
- * Сообщение чата (offline-first + синхронизация с Firebase).
+ * Сообщение чата (локальное хранение в SQLite/Room).
  */
 @Entity(
         tableName = "messages",
@@ -16,12 +16,6 @@ import androidx.room.PrimaryKey;
                         entity = ChatEntity.class,
                         parentColumns = "id",
                         childColumns = "chatId",
-                        onDelete = ForeignKey.CASCADE
-                ),
-                @ForeignKey(
-                        entity = UserEntity.class,
-                        parentColumns = "id",
-                        childColumns = "senderId",
                         onDelete = ForeignKey.CASCADE
                 )
         },

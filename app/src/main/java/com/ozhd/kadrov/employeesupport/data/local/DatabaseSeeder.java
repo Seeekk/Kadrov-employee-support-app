@@ -6,9 +6,13 @@ import com.ozhd.kadrov.employeesupport.core.DemoAccounts;
 import com.ozhd.kadrov.employeesupport.core.FieldSchemaJson;
 import com.ozhd.kadrov.employeesupport.data.local.entity.DepartmentEntity;
 import com.ozhd.kadrov.employeesupport.data.local.entity.RequestFieldDefinitionEntity;
+import com.ozhd.kadrov.employeesupport.data.local.entity.RequestEntity;
 import com.ozhd.kadrov.employeesupport.data.local.entity.RequestKindEntity;
 import com.ozhd.kadrov.employeesupport.data.local.entity.UserEntity;
+import com.ozhd.kadrov.employeesupport.data.model.ApprovalStatus;
 import com.ozhd.kadrov.employeesupport.data.model.FieldInputType;
+import com.ozhd.kadrov.employeesupport.data.model.Gender;
+import com.ozhd.kadrov.employeesupport.data.model.RequestStatus;
 import com.ozhd.kadrov.employeesupport.data.model.UserRole;
 
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public final class DatabaseSeeder {
     public static void seedIfNeeded(@NonNull AppDatabase db) {
         seedUsersIfNeeded(db);
         seedRequestKindsIfNeeded(db);
+        seedRequestsIfNeeded(db);
     }
 
     private static void seedUsersIfNeeded(AppDatabase db) {
@@ -51,7 +56,12 @@ public final class DatabaseSeeder {
         employee.phone = "+7 900 000-00-01";
         employee.avatarUrl = null;
         employee.departmentId = DemoAccounts.SEED_DEPARTMENT_ID;
+        employee.position = "Специалист";
+        employee.gender = Gender.MALE;
+        employee.militaryDocument = "MB-000001";
         employee.role = UserRole.EMPLOYEE;
+        employee.approvalStatus = ApprovalStatus.APPROVED;
+        employee.isMilitaryLiable = true;
         employee.isActive = true;
         employee.updatedAt = System.currentTimeMillis();
         employee.isSynced = true;
@@ -64,7 +74,12 @@ public final class DatabaseSeeder {
         hr.phone = "+7 900 000-00-02";
         hr.avatarUrl = null;
         hr.departmentId = DemoAccounts.SEED_DEPARTMENT_ID;
+        hr.position = "HR менеджер";
+        hr.gender = Gender.FEMALE;
+        hr.militaryDocument = null;
         hr.role = UserRole.HR;
+        hr.approvalStatus = ApprovalStatus.APPROVED;
+        hr.isMilitaryLiable = false;
         hr.isActive = true;
         hr.updatedAt = System.currentTimeMillis();
         hr.isSynced = true;
@@ -128,6 +143,26 @@ public final class DatabaseSeeder {
         f.sortOrder = order;
         f.validationJson = null;
         return f;
+    }
+
+    private static void seedRequestsIfNeeded(@NonNull AppDatabase db) {
+        if (db.requestDao().countRequestsSync() > 0) {
+            return;
+        }
+        long now = System.currentTimeMillis();
+        RequestEntity request = new RequestEntity();
+        request.id = "rq-seed-1";
+        request.userId = DemoAccounts.SEED_USER_EMPLOYEE_ID;
+        request.kindId = KIND_VACATION;
+        request.status = RequestStatus.PENDING;
+        request.title = "Отпуск / больничный";
+        request.description = "Тестовая заявка для проверки отображения списка";
+        request.payloadJson = "{\"startDate\":\"2026-05-10\",\"endDate\":\"2026-05-15\",\"reason\":\"Тест\"}";
+        request.rejectionReason = null;
+        request.createdAt = now;
+        request.updatedAt = now;
+        request.isSynced = true;
+        db.requestDao().upsert(request);
     }
 
     /** Генерация id для полей/типов, создаваемых HR в UI. */

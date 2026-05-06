@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "000000000000",
-    "project_id": "ozhd-kadrov-placeholder",
-    "storage_bucket": "ozhd-kadrov-placeholder.appspot.com"
+    "project_number": "601239846517",
+    "firebase_url": "https://planning-with-ai-b1f65-default-rtdb.firebaseio.com",
+    "project_id": "planning-with-ai-b1f65",
+    "storage_bucket": "planning-with-ai-b1f65.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:000000000000:android:placeholder",
+        "mobilesdk_app_id": "1:601239846517:android:3906d1b57be9f5debd823c",
         "android_client_info": {
           "package_name": "com.ozhd.kadrov.employeesupport"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "REPLACE_WITH_FIREBASE_CONSOLE_KEY"
+          "current_key": "AIzaSyAI5XKQhuUsoADnUyoxkhd593TXU_4Tg88"
         }
       ],
       "services": {

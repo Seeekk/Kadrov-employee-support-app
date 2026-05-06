@@ -24,6 +24,9 @@
     <string name="emp_tab_dept">Мой отдел</string>
     <string name="emp_tab_military">Военнообязанные</string>
     <string name="emp_tab_dismissed">Уволенные</string>
+    <string name="employees_filter_active">Активные</string>
+    <string name="employees_empty">Список пуст</string>
+    <string name="employees_open_admin_bar">Администрирование: отделы, заявки на регистрацию, типы заявок</string>
 
     <string name="req_tab_vacation">Отпуск/больничный</string>
     <string name="req_tab_bonus">Премия/повышение</string>
@@ -34,16 +37,46 @@
     <string name="notif_tab_archive">Архив</string>
     <string name="notif_tab_system">Системные</string>
     <string name="notif_tab_chat">Чат</string>
+    <string name="notifications_filter_title">Фильтр уведомлений</string>
 
     <string name="login_title">Вход</string>
     <string name="login_email">Email</string>
     <string name="login_password">Пароль</string>
     <string name="login_submit">Войти</string>
+    <string name="login_register">Зарегистрироваться как сотрудник</string>
+    <string name="login_open_register">Открыть регистрацию</string>
+    <string name="register_title">Регистрация сотрудника</string>
+    <string name="register_hint">После регистрации аккаунт должен подтвердить HR. До подтверждения вход недоступен.</string>
+    <string name="register_success_pending">Заявка на регистрацию создана. Дождитесь подтверждения HR.</string>
+    <string name="register_name_required">Введите ФИО</string>
+    <string name="register_generate_password">Сгенерировать сложный пароль</string>
+    <string name="register_password_requirements">Пароль: минимум 8 символов, заглавная и строчная буква, цифра и спецсимвол.</string>
+    <string name="register_password_weak">Слишком простой пароль</string>
+    <string name="register_military_liable">Военнообязанный</string>
+    <string name="register_military_yes">Да</string>
+    <string name="register_military_no">Нет</string>
     <string name="login_error_empty">Заполните поля</string>
-    <string name="login_hint_demo">Без сервера (debug): сотрудник — employee@ozhd.local / employee123 · HR — hr@ozhd.local / hr123. Или любой email с hr. в адресе.</string>
+    <string name="login_hint_demo">Без сервера (debug): сотрудник — employee@ozhd.local / employee123 · HR — hr@ozhd.local / hr123. Можно зарегистрировать нового сотрудника по email и паролю.</string>
 
     <string name="role_employee">Сотрудник</string>
     <string name="role_hr">HR</string>
+    <string name="role_hr_long">Кадровик (HR)</string>
+    <string name="gender_male">Мужской</string>
+    <string name="gender_female">Женский</string>
+    <string name="gender_male_icon">♂ Мужской</string>
+    <string name="gender_female_icon">♀ Женский</string>
+    <string name="approval_pending">Ожидает</string>
+    <string name="approval_approved">Подтверждён</string>
+    <string name="approval_rejected">Отклонён</string>
+    <string name="hr_role_hint">Роль (Сотрудник / Кадровик)</string>
+    <string name="hr_approval_hint">Статус (Ожидает / Подтверждён / Отклонён)</string>
+    <string name="profile_position">Должность</string>
+    <string name="profile_gender">Пол</string>
+    <string name="profile_military_document">Военный билет</string>
+    <string name="profile_save">Сохранить профиль</string>
+    <string name="profile_saved">Профиль сохранён</string>
+    <string name="profile_position_required">Укажите должность</string>
+    <string name="profile_military_required">Для мужского пола военный билет обязателен</string>
 
     <string name="chat_hint">Сообщение…</string>
     <string name="chat_send">Отправить</string>
@@ -58,6 +91,7 @@
     <string name="hr_only_message">Доступно только для роли HR.</string>
     <string name="hr_tab_departments">Отделы</string>
     <string name="hr_tab_employees">Сотрудники</string>
+    <string name="hr_tab_registrations">Заявки на регистрацию</string>
     <string name="hr_tab_request_types">Типы заявок</string>
     <string name="hr_add_department">Новый отдел</string>
     <string name="hr_add_employee">Новый сотрудник</string>
@@ -74,12 +108,18 @@
     <string name="hr_kind_desc">Описание типа</string>
     <string name="hr_field_key">Ключ поля (латиница)</string>
     <string name="hr_field_label">Подпись</string>
+    <string name="hr_registration_request">Подтверждение регистрации</string>
     <string name="hr_sync_stub">Изменения сохранены локально. Нажмите «Синхронизация» в шапке консоли HR для загрузки каталога с сервера (GET hr/catalog).</string>
     <string name="hr_sync_menu">Синхронизация</string>
     <string name="hr_sync_ok">Справочники обновлены с сервера</string>
     <string name="hr_sync_fail">Не удалось синхронизировать: %1$s</string>
     <string name="hr_edit">Изменить</string>
     <string name="hr_delete_self_forbidden">Нельзя удалить текущего пользователя.</string>
+    <string name="hr_user_actions_hint">Выберите действие с сотрудником</string>
+    <string name="hr_user_dismiss">Уволить</string>
+    <string name="hr_user_delete">Удалить</string>
+    <string name="hr_dismiss_reason_hint">Причина увольнения</string>
+    <string name="hr_dismiss_reason_required">Укажите причину увольнения</string>
     <string name="hr_fields_section">Поля выбранного типа</string>
 
     <string name="create_request_empty_kinds">Нет активных типов заявок. Обратитесь к HR.</string>

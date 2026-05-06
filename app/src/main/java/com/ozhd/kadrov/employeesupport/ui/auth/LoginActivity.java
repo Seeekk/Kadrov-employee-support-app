@@ -15,7 +15,7 @@ import com.ozhd.kadrov.employeesupport.ui.main.MainActivity;
 import com.ozhd.kadrov.employeesupport.ui.viewmodel.LoginViewModel;
 
 /**
- * Авторизация: валидация полей, вызов репозитория (REST/Firebase), сохранение сессии во ViewModel.
+ * Авторизация: валидация полей, вызов репозитория (REST), сохранение сессии во ViewModel.
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 case LOADING:
                     binding.progress.setVisibility(View.VISIBLE);
                     binding.buttonLogin.setEnabled(false);
+                    binding.buttonOpenRegister.setEnabled(false);
                     break;
                 case SUCCESS:
                     if (binding == null || isFinishing()) {
@@ -42,23 +43,28 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     binding.progress.setVisibility(View.GONE);
                     binding.buttonLogin.setEnabled(true);
+                    binding.buttonOpenRegister.setEnabled(true);
                     startActivity(new Intent(this, MainActivity.class));
                     finish();
                     break;
                 case ERROR:
                     binding.progress.setVisibility(View.GONE);
                     binding.buttonLogin.setEnabled(true);
+                    binding.buttonOpenRegister.setEnabled(true);
                     Toast.makeText(this, state.message, Toast.LENGTH_LONG).show();
                     break;
                 case IDLE:
                 default:
                     binding.progress.setVisibility(View.GONE);
                     binding.buttonLogin.setEnabled(true);
+                    binding.buttonOpenRegister.setEnabled(true);
                     break;
             }
         });
 
         binding.buttonLogin.setOnClickListener(v -> attemptLogin());
+        binding.buttonOpenRegister.setOnClickListener(v ->
+                startActivity(new Intent(this, RegisterActivity.class)));
     }
 
     private void attemptLogin() {

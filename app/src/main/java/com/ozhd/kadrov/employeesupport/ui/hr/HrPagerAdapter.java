@@ -21,6 +21,8 @@ public class HrPagerAdapter extends FragmentStateAdapter {
                 return HrDepartmentsFragment.newInstance();
             case 1:
                 return HrEmployeesFragment.newInstance();
+            case 2:
+                return HrRegistrationsFragment.newInstance();
             default:
                 return HrRequestKindsFragment.newInstance();
         }
@@ -28,6 +30,6 @@ public class HrPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 4;
     }
 }

@@ -41,4 +41,7 @@ public interface RequestDao {
 
     @Query("SELECT * FROM requests WHERE id = :id LIMIT 1")
     RequestEntity getByIdSync(String id);
+
+    @Query("SELECT COUNT(*) FROM requests")
+    int countRequestsSync();
 }

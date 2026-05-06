@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isHr() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'HR';
+    }
+
+    function isValidMessage() {
+      return request.resource.data.keys().hasOnly([
+        'senderId',
+        'text',
+        'timestamp',
+        'isRead'
+      ])
+      && request.resource.data.senderId is string
+      && request.resource.data.senderId.size() > 0
+      && request.resource.data.senderId.size() <= 128
+      && request.resource.data.text is string
+      && request.resource.data.text.size() > 0
+      && request.resource.data.text.size() <= 2000
+      && request.resource.data.timestamp is int
+      && request.resource.data.timestamp > 0
+      && request.resource.data.isRead is bool;
+    }
+
+    match /chats/{chatId} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if false;
+
+      match /messages/{messageId} {
+        allow read: if isSignedIn();
+        allow create: if isSignedIn() && isValidMessage();
+        allow update, delete: if false;
+      }
+    }
+
+    match /notifications/{targetUserId}/items/{notificationId} {
+      allow read: if isSignedIn() && request.auth.uid == targetUserId;
+      allow create: if isSignedIn();
+      allow update, delete: if false;
+    }
+
+    match /hr_requests/{requestId} {
+      // HR видит все заявки, сотрудник — только свои.
+      allow read: if isSignedIn()
+        && (isHr() || resource.data.userId == request.auth.uid);
+      // Создавать заявку может только владелец userId.
+      allow create: if isSignedIn()
+        && request.resource.data.userId is string
+        && request.resource.data.userId == request.auth.uid;
+      // Обновлять статус может только HR.
+      allow update: if isHr();
+      allow delete: if false;
+    }
+
+    match /users/{userId} {
+      // Читать профиль могут авторизованные пользователи (для резолва роли/профиля).
+      allow read: if isSignedIn();
+      // Профиль правит HR, либо сам пользователь может создать/обновить свою запись.
+      allow create, update: if isSignedIn()
+        && (isHr() || request.auth.uid == userId);
+      allow delete: if isHr();
+    }
+
+    match /hr/{docId} {
+      allow read, write: if isHr();
+    }
+  }
+}

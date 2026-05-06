@@ -8,6 +8,7 @@ import com.ozhd.kadrov.employeesupport.core.RoleHelper;
 import com.ozhd.kadrov.employeesupport.data.model.UserRole;
 import com.ozhd.kadrov.employeesupport.ui.chat.ChatFragment;
 import com.ozhd.kadrov.employeesupport.ui.common.SectionPlaceholderFragment;
+import com.ozhd.kadrov.employeesupport.ui.hr.HrRegistrationsFragment;
 import com.ozhd.kadrov.employeesupport.ui.profile.ProfileFragment;
 import com.ozhd.kadrov.employeesupport.ui.requests.RequestsFragment;
 
@@ -43,7 +44,7 @@ public class HomePagerAdapter extends FragmentStateAdapter {
                 case 1:
                     return ChatFragment.newInstance();
                 case 2:
-                    return SectionPlaceholderFragment.newInstance(titleModeration);
+                    return HrRegistrationsFragment.newInstance();
                 case 3:
                 default:
                     return RequestsFragment.newInstance();

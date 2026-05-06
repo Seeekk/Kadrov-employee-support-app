@@ -2,7 +2,9 @@ package com.ozhd.kadrov.employeesupport.data.local;
 
 import androidx.room.TypeConverter;
 
+import com.ozhd.kadrov.employeesupport.data.model.ApprovalStatus;
 import com.ozhd.kadrov.employeesupport.data.model.FieldInputType;
+import com.ozhd.kadrov.employeesupport.data.model.Gender;
 import com.ozhd.kadrov.employeesupport.data.model.NotificationType;
 import com.ozhd.kadrov.employeesupport.data.model.RequestStatus;
 import com.ozhd.kadrov.employeesupport.data.model.UserRole;
@@ -23,6 +25,16 @@ public final class Converters {
     @TypeConverter
     public static String userRoleToString(UserRole role) {
         return role == null ? UserRole.EMPLOYEE.name() : role.name();
+    }
+
+    @TypeConverter
+    public static ApprovalStatus fromApprovalStatus(String value) {
+        return ApprovalStatus.fromString(value);
+    }
+
+    @TypeConverter
+    public static String approvalStatusToString(ApprovalStatus status) {
+        return status == null ? ApprovalStatus.PENDING.name() : status.name();
     }
 
     @TypeConverter
@@ -53,5 +65,15 @@ public final class Converters {
     @TypeConverter
     public static String notificationTypeToString(NotificationType type) {
         return type == null ? NotificationType.SYSTEM.name() : type.name();
+    }
+
+    @TypeConverter
+    public static Gender fromGender(String value) {
+        return Gender.fromString(value);
+    }
+
+    @TypeConverter
+    public static String genderToString(Gender gender) {
+        return gender == null ? Gender.MALE.name() : gender.name();
     }
 }

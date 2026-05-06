@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Transaction;
 
 import com.ozhd.kadrov.employeesupport.data.local.entity.ChatEntity;
 import com.ozhd.kadrov.employeesupport.data.local.entity.ChatMemberEntity;
@@ -16,8 +17,19 @@ import java.util.List;
 @Dao
 public interface ChatDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void upsertChat(ChatEntity chat);
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    long insertChatIgnore(ChatEntity chat);
+
+    @Query("UPDATE chats SET name = :name, isGroup = :isGroup WHERE id = :chatId")
+    void updateChat(String chatId, String name, boolean isGroup);
+
+    @Transaction
+    default void upsertChat(ChatEntity chat) {
+        long inserted = insertChatIgnore(chat);
+        if (inserted == -1) {
+            updateChat(chat.id, chat.name, chat.isGroup);
+        }
+    }
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void upsertMessages(List<MessageEntity> messages);

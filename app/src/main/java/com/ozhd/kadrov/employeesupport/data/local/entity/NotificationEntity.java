@@ -39,6 +39,8 @@ public class NotificationEntity {
     @NonNull
     public String message = "";
 
+    public String relatedUserId;
+
     public boolean isRead;
     public long createdAt;
 }

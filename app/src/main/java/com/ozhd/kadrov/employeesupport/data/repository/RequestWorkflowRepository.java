@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import com.ozhd.kadrov.employeesupport.data.local.AppDatabase;
 import com.ozhd.kadrov.employeesupport.data.local.pojo.RequestWithAuthor;
 import com.ozhd.kadrov.employeesupport.data.model.RequestStatus;
+import com.ozhd.kadrov.employeesupport.data.remote.firebase.FirestoreRequestSync;
 
 import java.util.List;
 
@@ -17,9 +18,12 @@ import java.util.List;
 public class RequestWorkflowRepository {
 
     private final AppDatabase db;
+    private final FirestoreRequestSync firestoreSync;
 
     public RequestWorkflowRepository(@NonNull Context context) {
         db = AppDatabase.getInstance(context);
+        firestoreSync = new FirestoreRequestSync(db);
+        firestoreSync.listenAll();
     }
 
     public LiveData<List<RequestWithAuthor>> observeAllRequests() {

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_hr_console"
+        android:icon="@android:drawable/ic_menu_manage"
         android:title="@string/menu_hr_console"
         android:visible="false"
         app:showAsAction="ifRoom" />

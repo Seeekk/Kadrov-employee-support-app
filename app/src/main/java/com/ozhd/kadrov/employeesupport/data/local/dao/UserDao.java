@@ -53,6 +53,9 @@ public interface UserDao {
     @Query("SELECT * FROM users WHERE role = :role AND isActive = 1")
     LiveData<List<UserEntity>> observeByRole(UserRole role);
 
+    @Query("SELECT * FROM users WHERE role = :role")
+    List<UserEntity> getByRoleSync(UserRole role);
+
     @Query("SELECT COUNT(*) FROM users")
     int countUsers();
 

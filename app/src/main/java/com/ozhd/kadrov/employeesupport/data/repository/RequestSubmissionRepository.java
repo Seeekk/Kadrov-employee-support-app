@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 import com.ozhd.kadrov.employeesupport.data.local.AppDatabase;
 import com.ozhd.kadrov.employeesupport.data.local.entity.RequestEntity;
 import com.ozhd.kadrov.employeesupport.data.model.RequestStatus;
+import com.ozhd.kadrov.employeesupport.data.remote.firebase.FirestoreRequestSync;
 
 import java.util.Map;
 import java.util.UUID;
@@ -19,10 +20,12 @@ import java.util.UUID;
 public class RequestSubmissionRepository {
 
     private final AppDatabase db;
+    private final FirestoreRequestSync firestoreSync;
     private final Gson gson = new Gson();
 
     public RequestSubmissionRepository(@NonNull Context context) {
         this.db = AppDatabase.getInstance(context);
+        this.firestoreSync = new FirestoreRequestSync(db);
     }
 
     public void submitAsync(@NonNull String userId,
@@ -50,6 +53,7 @@ public class RequestSubmissionRepository {
             r.updatedAt = r.createdAt;
             r.isSynced = false;
             db.requestDao().upsert(r);
+            firestoreSync.sendRequest(r);
         });
     }
 }

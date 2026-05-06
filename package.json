@@ -1,0 +1,12 @@
+{
+  "name": "kadrov-workspace",
+  "private": true,
+  "scripts": {
+    "firebase:deploy": "firebase deploy --only functions,firestore:rules --project planning-with-ai-b1f65",
+    "firebase:install-functions": "npm --prefix functions ci",
+    "firebase:backfill": "npm --prefix functions run backfill --"
+  },
+  "devDependencies": {
+    "firebase-tools": "^13.29.2"
+  }
+}

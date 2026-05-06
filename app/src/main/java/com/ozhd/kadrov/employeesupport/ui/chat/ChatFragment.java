@@ -20,8 +20,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Чат: Room + realtime Firestore. При отсутствии настроенного Firebase сообщения остаются локальными
- * после отправки через {@link ChatRepository#sendMessage}.
+ * Чат работает в гибридном режиме: Room + Firestore.
  */
 public class ChatFragment extends Fragment {
 

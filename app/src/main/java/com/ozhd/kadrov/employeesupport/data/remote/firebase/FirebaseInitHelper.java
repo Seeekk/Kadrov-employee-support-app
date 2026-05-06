@@ -5,8 +5,7 @@ import androidx.annotation.NonNull;
 import com.google.firebase.FirebaseApp;
 
 /**
- * Проверка, что Firebase инициализирован (иначе {@link com.google.firebase.auth.FirebaseAuth}
- * и {@link com.google.firebase.firestore.FirebaseFirestore} падают с {@link IllegalStateException}).
+ * Проверка, что Firebase инициализирован (иначе Firebase Auth/Firestore могут падать).
  */
 public final class FirebaseInitHelper {
 

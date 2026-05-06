@@ -59,6 +59,12 @@ public final class SessionManager {
         return UserRole.fromString(prefs.getString(KEY_ROLE, UserRole.EMPLOYEE.name()));
     }
 
+    @NonNull
+    public String getEmailOrEmpty() {
+        String email = prefs.getString(KEY_EMAIL, null);
+        return email != null ? email : "";
+    }
+
     public void clear() {
         prefs.edit().clear().apply();
     }

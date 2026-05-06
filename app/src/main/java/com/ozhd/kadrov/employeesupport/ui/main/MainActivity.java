@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.ozhd.kadrov.employeesupport.R;
 import com.ozhd.kadrov.employeesupport.core.RoleHelper;
+import com.ozhd.kadrov.employeesupport.data.repository.NotificationRepository;
 import com.ozhd.kadrov.employeesupport.ui.hr.HrConsoleFragment;
 import com.ozhd.kadrov.employeesupport.ui.viewmodel.SessionViewModel;
 import com.ozhd.kadrov.employeesupport.databinding.ActivityMainBinding;
@@ -27,6 +29,7 @@ import com.ozhd.kadrov.employeesupport.ui.requests.CreateRequestFragment;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private NotificationRepository notificationRepository;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,14 +39,26 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.toolbar);
         binding.toolbar.inflateMenu(R.menu.menu_main);
         binding.toolbar.setOnMenuItemClickListener(item -> onOptionsItemSelected(item));
+        notificationRepository = new NotificationRepository(this);
 
         SessionViewModel sessionViewModel = new ViewModelProvider(this).get(SessionViewModel.class);
-        sessionViewModel.getRole().observe(this, role -> {
+        sessionViewModel.getRole().observe(this, role -> applyHrMenuVisibility(role));
+
+        notificationRepository.observeUnreadCount().observe(this, unread -> {
             if (binding == null) return;
-            android.view.MenuItem hr = binding.toolbar.getMenu().findItem(R.id.menu_hr_console);
-            if (hr != null) {
-                hr.setVisible(RoleHelper.isHr(role));
+            boolean isHr = RoleHelper.isHr(sessionViewModel.getRoleValue());
+            if (!isHr) {
+                binding.bottomNav.removeBadge(R.id.nav_notifications);
+                return;
             }
+            int count = unread != null ? unread : 0;
+            if (count <= 0) {
+                binding.bottomNav.removeBadge(R.id.nav_notifications);
+                return;
+            }
+            BadgeDrawable badge = binding.bottomNav.getOrCreateBadge(R.id.nav_notifications);
+            badge.setVisible(true);
+            badge.setNumber(count);
         });
 
         if (savedInstanceState == null) {
@@ -73,6 +88,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.bottomNav.setOnItemReselectedListener(item -> { /* без сброса стека */ });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SessionViewModel sessionViewModel = new ViewModelProvider(this).get(SessionViewModel.class);
+        sessionViewModel.refreshRoleFromSession();
+        applyHrMenuVisibility(sessionViewModel.getRoleValue());
+    }
+
+    private void applyHrMenuVisibility(com.ozhd.kadrov.employeesupport.data.model.UserRole role) {
+        if (binding == null) return;
+        MenuItem hr = binding.toolbar.getMenu().findItem(R.id.menu_hr_console);
+        if (hr != null) {
+            hr.setVisible(RoleHelper.isHr(role));
+        }
+        if (!RoleHelper.isHr(role)) {
+            binding.bottomNav.removeBadge(R.id.nav_notifications);
+        }
     }
 
     private void openFragment(@NonNull Fragment fragment, @IdRes int navId) {

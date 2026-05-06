@@ -50,7 +50,7 @@ import java.util.concurrent.Executors;
                 NotificationEntity.class,
                 AttachmentEntity.class
         },
-        version = 5,
+        version = 9,
         exportSchema = false
 )
 @TypeConverters({Converters.class})

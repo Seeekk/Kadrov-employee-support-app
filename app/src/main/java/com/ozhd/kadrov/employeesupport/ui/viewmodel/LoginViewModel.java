@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.ozhd.kadrov.employeesupport.data.model.Gender;
 import com.ozhd.kadrov.employeesupport.data.model.UserRole;
 import com.ozhd.kadrov.employeesupport.data.repository.AuthRepository;
 
@@ -45,11 +46,39 @@ public class LoginViewModel extends AndroidViewModel {
         state.postValue(LoginUiState.loading());
         loginExecutor.execute(() -> {
             AuthRepository.AuthResult result = authRepository.login(email.trim(), password);
+            if (result == null) {
+                state.postValue(LoginUiState.error("Ошибка входа"));
+                return;
+            }
             if (result.success && result.role != null) {
                 state.postValue(LoginUiState.success(result.role));
             } else {
                 state.postValue(LoginUiState.error(
                         result.errorMessage != null ? result.errorMessage : "Ошибка входа"));
+            }
+        });
+    }
+
+    public void register(
+            @NonNull String fullName,
+            @NonNull String email,
+            @NonNull String password,
+            @NonNull Gender gender,
+            boolean militaryLiable
+    ) {
+        state.postValue(LoginUiState.loading());
+        loginExecutor.execute(() -> {
+            AuthRepository.AuthResult result = authRepository.registerEmployee(
+                    fullName.trim(), email.trim(), password, gender, militaryLiable);
+            if (result == null) {
+                state.postValue(LoginUiState.error("Ошибка регистрации"));
+                return;
+            }
+            if (result.success && result.role != null) {
+                state.postValue(LoginUiState.success(result.role));
+            } else {
+                state.postValue(LoginUiState.error(
+                        result.errorMessage != null ? result.errorMessage : "Ошибка регистрации"));
             }
         });
     }

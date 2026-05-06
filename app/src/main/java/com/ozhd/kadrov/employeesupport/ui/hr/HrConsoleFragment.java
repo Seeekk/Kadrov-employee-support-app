@@ -85,7 +85,7 @@ public class HrConsoleFragment extends Fragment {
         });
 
         binding.hrViewPager.setAdapter(new HrPagerAdapter(this));
-        binding.hrViewPager.setOffscreenPageLimit(3);
+        binding.hrViewPager.setOffscreenPageLimit(4);
         mediator = new TabLayoutMediator(binding.hrTabLayout, binding.hrViewPager,
                 (tab, position) -> {
                     switch (position) {
@@ -94,6 +94,9 @@ public class HrConsoleFragment extends Fragment {
                             break;
                         case 1:
                             tab.setText(R.string.hr_tab_employees);
+                            break;
+                        case 2:
+                            tab.setText(R.string.hr_tab_registrations);
                             break;
                         default:
                             tab.setText(R.string.hr_tab_request_types);

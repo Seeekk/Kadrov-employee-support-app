@@ -6,6 +6,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import com.ozhd.kadrov.employeesupport.data.model.ApprovalStatus;
+import com.ozhd.kadrov.employeesupport.data.model.Gender;
 import com.ozhd.kadrov.employeesupport.data.model.UserRole;
 
 /**
@@ -30,7 +32,7 @@ public class UserEntity {
     @NonNull
     public String email = "";
 
-    /** Хэш пароля или пусто, если авторизация только через Firebase. */
+    /** Хэш пароля или пусто, если авторизация выполняется только через backend API. */
     public String passwordHash;
 
     @NonNull
@@ -39,11 +41,25 @@ public class UserEntity {
     public String phone;
     public String avatarUrl;
     public String departmentId;
+    public String position;
+
+    @NonNull
+    public Gender gender = Gender.MALE;
+
+    public String militaryDocument;
 
     @NonNull
     public UserRole role = UserRole.EMPLOYEE;
 
+    @NonNull
+    public ApprovalStatus approvalStatus = ApprovalStatus.PENDING;
+
+    public boolean isMilitaryLiable;
+
     public boolean isActive = true;
+
+    /** Причина увольнения/деактивации, если аккаунт отключён HR. */
+    public String dismissalReason;
 
     /** Время последнего обновления записи на сервере (epoch millis). */
     public long updatedAt;

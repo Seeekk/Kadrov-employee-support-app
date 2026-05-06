@@ -3,7 +3,8 @@ package com.ozhd.kadrov.employeesupport.data.model;
 public enum NotificationType {
     SYSTEM,
     CHAT,
-    REQUEST;
+    REQUEST,
+    REGISTRATION;
 
     public static NotificationType fromString(String value) {
         if (value == null) return SYSTEM;
